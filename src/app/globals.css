@@ -2,26 +2,130 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100vh;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.navbarWrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid lightgray;
+  padding: 6px 16px 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logoWrapper {
+    display: flex;
+    align-items: center;
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+}
+input,
+textarea,
+select {
+  border: 1px solid lightgrey;
+  border-radius: 8px;
+  padding: 8px;
+  outline: none;
+}
+button {
+  padding: 8px 20px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  background-color: #4361ee;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.taskListWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  /* justify-content: center; */
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 72px;
+  ul {
+  }
+}
+.createTaskForm,
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  input,
+  textarea {
+    flex: 1;
+  }
+  .task-item {
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+.createTaskForm {
+  background-color: rgb(238, 238, 238);
+  border-radius: 8px;
+  padding: 16px 24px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 12px 0;
+}
+
+li {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-left: 4px solid;
+}
+
+.task-item.low {
+  background-color: #d8f3dc;
+}
+
+.task-item.medium {
+  background-color: #fffae5;
+}
+
+.task-item.high {
+  background-color: #fff0f3;
+}
+
+.taskCard {
+  span {
+    cursor: pointer;
+    &:active {
+      transform: scale(1.1);
+    }
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@media (min-width: 768px) {
+  .taskListWrapper {
+    width: 50%;
+  }
 }
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (max-width: 768px) {
+  .taskListWrapper {
+    width: 95%;
   }
 }
